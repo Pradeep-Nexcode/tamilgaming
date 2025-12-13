@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import "tailwindcss";
+
+/* =========================
+   ROOT COLOR TOKENS
+   ========================= */
+:root {
+  --tamil-black: #0A0A0A;
+  --tamil-black-soft: #141414;
+
+  --tamil-white: #FFFFFF;
+  --tamil-white-muted: rgba(255, 255, 255, 0.7);
+
+  --tamil-orange: #F65900;
+  --tamil-orange-light: #FF7020;
+
+  --tamil-border: rgba(255, 255, 255, 0.08);
+  --tamil-shadow: rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   GLOBAL BASE
+   ========================= */
+body {
+  min-height: 100vh;
+  background: var(--tamil-black);
+  color: var(--tamil-white);
+  font-family: "Press Start 2P", system-ui;
+}
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tamil-black-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tamil-orange);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tamil-orange-light);
+}
+
+/* =========================
+   GLOBAL TRANSITIONS
+   ========================= */
+* {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              transform 0.3s ease;
+}
