@@ -45,8 +45,8 @@ const PlaylistSchema = new mongoose.Schema(
   }
 );
 
-const TamilGamingPlaylist =
-  mongoose.models.TamilGamingPlaylist ||
-  mongoose.model("TamilGamingPlaylist", PlaylistSchema);
+const Playlist =
+  mongoose.models.Playlist ||
+  mongoose.model("Playlist", PlaylistSchema);
 
-export default TamilGamingPlaylist;
+export default Playlist;

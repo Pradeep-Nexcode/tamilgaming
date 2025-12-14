@@ -21,6 +21,23 @@
 }
 
 /* =========================
+   FONT UTILITIES
+   ========================= */
+
+/* Retro pixel – headings, hero, buttons */
+.font-pixel {
+  font-family: "Press Start 2P", system-ui;
+  letter-spacing: 0.05em;
+}
+
+/* Retro terminal – body text, descriptions */
+.font-terminal {
+  font-family: "VT323", monospace;
+  letter-spacing: 0.02em;
+}
+
+
+/* =========================
    GLOBAL BASE
    ========================= */
 body {

@@ -1,15 +1,41 @@
-import AllVideosSection from '../../components/AllVideosSection';
+"use client"
 
-export const metadata = {
-  title: 'All Videos - Tamil Gaming',
-  description: 'Complete collection of all videos from the Tamil Gaming YouTube channel. Browse, search, and discover gaming content in Tamil.',
-  keywords: 'Tamil Gaming, YouTube videos, gaming content, Tamil, video library, gaming videos',
-};
+import { useState } from 'react'
+import VideosHeader from '@/components/user/videos/VideosHeader';
+import VideosSearchBar from '@/components/user/videos/VideosSearchBar';
+import VideosFilters from '@/components/user/videos/VideosFilters';
+// import VideoCard from '@/components/user/videos/VideoCard';
+import VideoGrid from '@/components/user/videos/VideoGrid';
+// import VideoCard from '@/components/user/videos/VideoCard';
+
 
 export default function VideosPage() {
+
+  const [search, setSearch] = useState("");
+  const [world, setWorld] = useState("All");
+  const [sort, setSort] = useState("new");
+  const [year, setYear] = useState("All");
   return (
     <main className="min-h-screen bg-gray-50">
-      <AllVideosSection />
+      <VideosHeader />
+
+      <VideosSearchBar value={search} onChange={setSearch} />
+
+      <VideosFilters
+        world={world}
+        setWorld={setWorld}
+        sort={sort}
+        setSort={setSort}
+        year={year}
+        setYear={setYear}
+      />
+
+      <VideoGrid
+        search={search}
+        world={world}
+        sort={sort}
+        year={year}
+      />
     </main>
   );
 }

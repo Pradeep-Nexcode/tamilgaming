@@ -24,18 +24,19 @@ export async function GET() {
       "gas",
     ];
 
-    // Build regex OR query for title
-    const titleRegex = murugesanKeywords.map(
+    // Build regex OR for title & tags
+    const keywordRegex = murugesanKeywords.map(
       (word) => new RegExp(word, "i")
     );
 
     const videos = await Video.find({
+      categoryId: "20", // Gaming only
       $or: [
-        { title: { $in: titleRegex } },          // Murugesan / simulator vibe
-        { viewCount: { $gte: 500000 } },          // High views
-        { likeCount: { $gte: 10000 } },           // High likes
+        { title: { $in: keywordRegex } },
+        { tags: { $in: keywordRegex } },
+        { viewCount: { $gte: 500000 } },
+        { likeCount: { $gte: 10000 } },
       ],
-      categoryId: "20", // Gaming category (safe filter)
     })
       .sort({
         viewCount: -1,
@@ -43,11 +44,13 @@ export async function GET() {
         publishedAt: -1,
       })
       .limit(6)
-      .select("title thumbnail url viewCount likeCount publishedAt");
+      .select(
+        "title thumbnail url viewCount likeCount publishedAt"
+      );
 
     return NextResponse.json({ videos });
   } catch (error) {
-    console.error(error);
+    console.error("FEATURED VIDEOS ERROR:", error);
     return NextResponse.json(
       { error: "Failed to fetch featured videos" },
       { status: 500 }
