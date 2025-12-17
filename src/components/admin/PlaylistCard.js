@@ -1,8 +1,14 @@
 import Image from "next/image";
+import EditPlaylistModal from "./playlist/EditPlaylistModal";
+import { useState } from "react";
+
 
 export default function PlaylistCard({ playlist }) {
+
+  const [open, setOpen] = useState(false);
   return (
-    <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-green-900/30 shadow-xl hover:shadow-2xl hover:border-green-600/50 transition-all duration-300 overflow-hidden group">
+
+    <>    <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-green-900/30 shadow-xl hover:shadow-2xl hover:border-green-600/50 transition-all duration-300 overflow-hidden group">
       <div className="relative">
         <Image width={480} height={270} src={playlist.thumbnail} alt={playlist.title} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300" />
         <div className="absolute top-2 right-2 bg-black/80 px-3 py-1.5 rounded text-xs font-bold text-white flex items-center gap-1">
@@ -25,7 +31,25 @@ export default function PlaylistCard({ playlist }) {
 
         <a href={playlist.url} target="_blank" rel="noopener noreferrer" className="block w-full bg-gradient-to-r from-green-600 to-green-700 text-white text-center px-4 py-2.5 rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium">View Playlist →</a>
       </div>
+
+      {/* Edit Button */}
+      <button
+        onClick={() => setOpen(true)}
+        className="absolute top-3 right-3 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm"
+      >
+        Edit
+      </button>
     </div>
+
+      {open && (
+        <EditPlaylistModal
+          playlist={playlist}
+          onClose={() => setOpen(false)}
+        />
+
+      )
+      }
+    </>
   );
 }
 

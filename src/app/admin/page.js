@@ -33,7 +33,7 @@ export default function AdminVideosPage() {
   const loadPlaylists = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/playlists");
+      const res = await fetch("/api/admin/playlists");
       const data = await res.json();
       setPlaylists(data.playlists || []);
     } catch (error) {

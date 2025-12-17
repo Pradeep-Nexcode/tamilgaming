@@ -9,14 +9,14 @@ export default function SubscribeCTA() {
       className="relative bg-black text-white py-32 overflow-hidden"
     >
       {/* Ambient Glow */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-red-600/20 blur-3xl rounded-full" />
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[var(--tamil-orange)]/20 blur-3xl rounded-full" />
 
       {/* Subtle Grid */}
       <div
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
+            "linear-gradient(rgba(var(--tamil-orange),0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--tamil-orange),0.2) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -28,7 +28,7 @@ export default function SubscribeCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-red-500 text-xs tracking-[0.35em] uppercase mb-6"
+          className="text-[var(--tamil-orange)] text-xs tracking-[0.35em] uppercase mb-6"
         >
           Join the Journey
         </motion.p>
@@ -43,7 +43,7 @@ export default function SubscribeCTA() {
         >
           Every World Has a Story.
           <br />
-          <span className="text-red-500">This One Continues on YouTube.</span>
+          <span className="text-[var(--tamil-orange)]">This One Continues on YouTube.</span>
         </motion.h2>
 
         {/* Description */}
@@ -65,10 +65,10 @@ export default function SubscribeCTA() {
           target="_blank"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-4 px-10 py-5 bg-red-600 hover:bg-red-700 text-white font-black text-sm uppercase tracking-widest relative overflow-hidden"
+          className="inline-flex items-center gap-4 px-10 py-5 bg-[var(--tamil-orange)] hover:bg-[var(--tamil-orange-light)] text-white font-black text-sm uppercase tracking-widest relative overflow-hidden"
         >
           {/* Hover glow */}
-          <span className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 opacity-0 hover:opacity-100 transition" />
+          <span className="absolute inset-0 bg-gradient-to-r from-[var(--tamil-orange)] to-[var(--tamil-orange-light)] opacity-0 hover:opacity-100 transition" />
 
           {/* Content */}
           <span className="relative z-10 flex items-center gap-4">

@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="relative bg-black text-white border-t border-white/10 overflow-hidden">
       
       {/* Subtle top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-red-600/10 blur-3xl" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[var(--tamil-orange)]/10 blur-3xl" />
 
       <div className="relative container mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
@@ -59,7 +59,7 @@ export default function Footer() {
               target="_blank"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-3 px-5 py-3 border border-red-600/40 text-red-500 hover:bg-red-600 hover:text-white transition font-bold text-xs uppercase tracking-widest"
+              className="inline-flex items-center gap-3 px-5 py-3 border border-[var(--tamil-orange)]/40 text-[var(--tamil-orange)] hover:bg-[var(--tamil-orange)] hover:text-white transition font-bold text-xs uppercase tracking-widest"
             >
               Visit Tamil Gaming
               <svg

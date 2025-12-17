@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,8 +23,10 @@ const Navbar = () => {
     { name: "Videos", href: "videos" },
     { name: "Worlds", href: "worlds" },
     { name: "About", href: "about" },
-    { name: "Contact", href: "contact" },
+    // { name: "Contact", href: "contact" },
   ];
+
+  
 
   return (
     <>
@@ -33,46 +36,50 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 ${isScrolled
-            ? "bg-[var(--tamil-black)]/90 backdrop-blur-xl border-b border-[var(--tamil-border)]"
-            : "bg-transparent"
+          ? "bg-[var(--tamil-black)]/90 backdrop-blur-xl border-b border-[var(--tamil-border)]"
+          : "bg-transparent"
           }`}
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
 
             {/* LOGO */}
-            <motion.a
-              href="#home"
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-4"
-            >
-              <div className="w-12 h-12 flex items-center justify-center border border-[var(--tamil-border)] bg-black">
-                <span className="text-[var(--tamil-orange)] text-xl font-black">
-                  M
-                </span>
-              </div>
+            <motion.div
 
-              <div className="leading-none">
-                <h2 className="text-white text-sm font-black tracking-tight">
-                  MURUGESAN
-                </h2>
-                <p className="text-[var(--tamil-white-muted)] text-[10px] uppercase tracking-widest">
-                  Tamil Gaming
-                </p>
-              </div>
-            </motion.a>
+              whileHover={{ scale: 1.05 }}
+            >
+              <Link href="/"
+                className="flex items-center gap-4"
+              >
+
+                <div className="w-12 h-12 flex items-center justify-center border border-[var(--tamil-border)] bg-black">
+                  <span className="text-[var(--tamil-orange)] text-xl font-black">
+                    M
+                  </span>
+                </div>
+
+                <div className="leading-none">
+                  <h2 className="text-white text-sm font-black tracking-tight">
+                    MURUGESAN
+                  </h2>
+                  <p className="text-[var(--tamil-white-muted)] text-[10px] uppercase tracking-widest">
+                    Tamil Gaming
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
 
             {/* DESKTOP NAV */}
             <div className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   className="relative text-[var(--tamil-white-muted)] text-xs uppercase tracking-widest hover:text-[var(--tamil-orange)]"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--tamil-orange)] hover:w-full transition-all duration-300" />
-                </a>
+                </Link>
               ))}
             </div>
 

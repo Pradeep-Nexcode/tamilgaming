@@ -139,11 +139,10 @@ export default function GalleryMoments() {
               <button
                 key={s}
                 onClick={() => setSort(s)}
-                className={`px-4 py-2 border transition ${
-                  sort === s
+                className={`px-4 py-2 border transition ${sort === s
                     ? "border-red-600 text-white"
                     : "border-white/20 text-gray-400 hover:text-white"
-                }`}
+                  }`}
               >
                 {s}
               </button>
@@ -152,7 +151,7 @@ export default function GalleryMoments() {
         </div>
 
         {/* Era Filters */}
-        <div className="flex gap-4 overflow-x-auto pb-6 mb-12">
+        {/* <div className="flex gap-4 overflow-x-auto pb-6 mb-12">
           {ERA_FILTERS.map((era) => (
             <button
               key={era.label}
@@ -166,7 +165,7 @@ export default function GalleryMoments() {
               {era.label}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Gallery Grid */}
         <AnimatePresence mode="popLayout">
@@ -184,9 +183,8 @@ export default function GalleryMoments() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className={`group relative overflow-hidden border border-white/10 ${
-                  index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""
-                }`}
+                className={`group relative overflow-hidden border border-white/10 ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""
+                  }`}
               >
                 <Image
                   src={video.thumbnail}

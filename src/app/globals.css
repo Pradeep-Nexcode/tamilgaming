@@ -51,7 +51,7 @@ body {
    SCROLLBAR
    ========================= */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-track {
@@ -60,7 +60,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--tamil-orange);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -68,11 +68,45 @@ body {
 }
 
 /* =========================
+   CUSTOM SCROLL (SCOPED)
+   ========================= */
+.myScroll {
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: var(--tamil-orange) transparent;
+}
+
+/* Chrome, Edge, Safari */
+.myScroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  /* for horizontal scroll */
+}
+
+.myScroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.myScroll::-webkit-scrollbar-thumb {
+  background: var(--tamil-orange);
+  border-radius: 6px;
+}
+
+.myScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--tamil-orange-light);
+}
+
+
+/* .myScroll.dark::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+} */
+
+/* =========================
    GLOBAL TRANSITIONS
    ========================= */
 * {
   transition: background-color 0.3s ease,
-              color 0.3s ease,
-              border-color 0.3s ease,
-              transform 0.3s ease;
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }

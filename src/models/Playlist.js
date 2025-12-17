@@ -22,8 +22,9 @@ const PlaylistSchema = new mongoose.Schema(
     },
     publishedAt: {
       type: Date,
-      required: true,
-    },
+      index: true,
+    }
+,
     url: {
       type: String,
       required: true,
@@ -39,6 +40,26 @@ const PlaylistSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    // 🔥 ADMIN CONTROLS
+    isFeatured: { type: Boolean, default: false },
+    isMurugesanWorld: { type: Boolean, default: false },
+
+    worldType: {
+      type: String,
+      enum: [
+        "Simulator",
+        "Horror",
+        "Urban",
+        "Transport",
+        "Service",
+        "Survival",
+        "Other",
+      ],
+      default: "Other",
+    },
+
+    customDescription: String,
+    color: String, // optional override
   },
   {
     timestamps: true,
@@ -46,7 +67,6 @@ const PlaylistSchema = new mongoose.Schema(
 );
 
 const Playlist =
-  mongoose.models.Playlist ||
+  mongoose.models.Playlist ??
   mongoose.model("Playlist", PlaylistSchema);
-
 export default Playlist;

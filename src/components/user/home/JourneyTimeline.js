@@ -9,7 +9,7 @@ export default function JourneyTimeline() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    fetch("/api/videos/timeline")
+    fetch("/api/videos/timeline?world=murugesan&sort=likes")
       .then((res) => res.json())
       .then((data) => setEras(data.eras || []));
   }, []);
@@ -24,7 +24,7 @@ export default function JourneyTimeline() {
 
         {/* Header */}
         <div className="max-w-2xl mb-14">
-          <p className="text-red-500 text-xs tracking-[0.35em] uppercase mb-4">
+          <p className="text-[var(--tamil-orange)] text-xs tracking-[0.35em] uppercase mb-4">
             Journey
           </p>
           <h2 className="text-3xl md:text-4xl font-black mb-4">
@@ -37,16 +37,15 @@ export default function JourneyTimeline() {
         </div>
 
         {/* Era Tabs */}
-        <div className="flex gap-6 overflow-x-auto pb-6 mb-10">
+        <div className="flex gap-6 overflow-x-auto myScroll  pb-6 mb-30">
           {eras.map((era, index) => (
             <button
               key={era.id}
               onClick={() => setActive(index)}
-              className={`relative px-4 py-2 text-left whitespace-nowrap transition ${
-                active === index
-                  ? "text-white"
-                  : "text-gray-500 hover:text-gray-300"
-              }`}
+              className={`relative px-2 py-2 text-left whitespace-nowrap transition ${active === index
+                ? "text-white"
+                : "text-gray-500 hover:text-gray-300"
+                }`}
             >
               <span className="block text-xs tracking-widest uppercase">
                 {era.years}
@@ -58,7 +57,7 @@ export default function JourneyTimeline() {
               {active === index && (
                 <motion.div
                   layoutId="activeEra"
-                  className="absolute -bottom-2 left-0 w-full h-0.5 bg-red-600"
+                  className="absolute -bottom-2 left-0 w-full h-0.5 bg-[var(--tamil-orange)]"
                 />
               )}
             </button>
@@ -70,27 +69,57 @@ export default function JourneyTimeline() {
           key={current.id}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex gap-6 overflow-x-auto pb-4"
+          transition={{ duration: 0.45 }}
+          className="
+    flex gap-6 overflow-x-auto myScroll  pb-4
+    scroll-smooth
+    snap-x snap-mandatory
+    no-scrollbar
+  "
         >
           {current.videos.map((video) => (
             <a
-              key={video.url}
+              key={video.videoId}
               href={video.url}
               target="_blank"
-              className="group min-w-[280px] max-w-[280px]"
+              rel="noopener noreferrer"
+              className="
+        snap-start
+        group
+        flex-shrink-0
+        w-[480px]
+      "
             >
-              <div className="relative overflow-hidden border border-white/10">
+              {/* Thumbnail */}
+              <div className="
+        relative
+        aspect-video
+        overflow-hidden
+        rounded-xl
+        bg-black
+        ring-1 ring-white/10
+        transition
+        group-hover:ring-white/20
+        group-hover:shadow-2xl
+      ">
                 <Image
                   src={video.thumbnail}
                   alt={video.title}
-                  width={480}
-                  height={270}
-                  className="w-full h-40 object-cover group-hover:scale-105 transition duration-500"
+                  fill
+                  sizes="480px"
+                  className="
+            object-cover
+            transition-transform duration-500
+            group-hover:scale-105
+          "
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                {/* Text */}
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h4 className="text-sm font-bold line-clamp-2">
+                  <h4 className="text-sm font-semibold leading-snug line-clamp-2">
                     {video.title}
                   </h4>
                   <p className="text-xs text-gray-400 mt-1">
@@ -101,6 +130,7 @@ export default function JourneyTimeline() {
             </a>
           ))}
         </motion.div>
+
       </div>
     </section>
   );

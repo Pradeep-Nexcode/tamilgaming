@@ -2,41 +2,30 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-const worlds = [
-  {
-    title: "Hotel World",
-    subtitle: "Where chaos meets order",
-    image: "/worlds/hotel.jpg",
-    tag: "hotel",
-  },
-  {
-    title: "Restaurant World",
-    subtitle: "Pressure never sleeps",
-    image: "/worlds/restaurant.jpg",
-    tag: "restaurant",
-  },
-  {
-    title: "Ranch World",
-    subtitle: "Survival is routine",
-    image: "/worlds/ranch.jpg",
-    tag: "ranch",
-  },
-  {
-    title: "Gas Station World",
-    subtitle: "Nights never end",
-    image: "/worlds/gas.jpg",
-    tag: "gas",
-  },
-  {
-    title: "Theater World",
-    subtitle: "Stories inside stories",
-    image: "/worlds/theater.jpg",
-    tag: "theater",
-  },
-];
+import { useEffect, useState } from "react";
 
 const WorldsOfMurugesan = () => {
+
+  const [worlds, setWorlds] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `/api/worlds?page=${1}&limit=6&sort=views&world=murugesan`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setWorlds(data.worlds);
+        setWorlds((prev) => {
+          const ids = new Set(prev.map((p) => p._id));
+          const unique = data.worlds.filter(
+            (p) => !ids.has(p._id)
+          );
+          return [...prev, ...unique];
+        });
+
+      });
+  }, []);
+
   return (
     <section
       id="worlds"
@@ -78,7 +67,7 @@ const WorldsOfMurugesan = () => {
               {/* Background Image */}
               <div className="absolute inset-0">
                 <Image
-                  src={world.image}
+                  src={world.thumbnail}
                   alt={world.title}
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
