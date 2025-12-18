@@ -34,8 +34,8 @@ export async function GET() {
       $or: [
         { title: { $in: keywordRegex } },
         { tags: { $in: keywordRegex } },
-        { viewCount: { $gte: 500000 } },
-        { likeCount: { $gte: 10000 } },
+        // { viewCount: { $gte: 500000 } },
+        { likeCount: { $gte: 40000 } },
       ],
     })
       .sort({
@@ -43,7 +43,7 @@ export async function GET() {
         likeCount: -1,
         publishedAt: -1,
       })
-      .limit(6)
+      .limit(20)
       .select(
         "title thumbnail url viewCount likeCount publishedAt"
       );

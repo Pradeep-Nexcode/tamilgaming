@@ -30,11 +30,11 @@ export default function Footer() {
             </p>
             <ul className="space-y-3 text-sm">
               {[
-                { label: "Home", href: "#home" },
-                { label: "Videos", href: "#videos" },
-                { label: "Journey", href: "#journey" },
-                { label: "Gallery", href: "#gallery" },
-                { label: "Subscribe", href: "#subscribe" },
+                { label: "Home", href: "/" },
+                { label: "Videos", href: "/videos" },
+                { label: "Worlds", href: "/worlds" },
+                { label: "About", href: "/about" },
+                // { label: "Subscribe", href: "/subscribe" },
               ].map((link) => (
                 <li key={link.label}>
                   <a

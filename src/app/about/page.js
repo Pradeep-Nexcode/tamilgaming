@@ -8,10 +8,10 @@ export const metadata = {
 
 export default function AboutPage() {
     return (
-        <section className="bg-[var(--tamil-black)] text-white min-h-screen">
+        <section className="container mx-auto px-6 bg-[var(--tamil-black)] text-white min-h-screen">
 
             {/* HERO */}
-            <div className="container mx-auto px-6 pt-32 pb-24">
+            <div className="pt-32 pb-24">
                 <p className="text-xs tracking-[0.35em] uppercase text-[var(--tamil-orange)] mb-6">
                     About
                 </p>
@@ -26,7 +26,7 @@ export default function AboutPage() {
 
 
             {/* CONTENT */}
-            <div className="container mx-auto px-6 pb-32">
+            <div className="pb-32">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
 
                     {/* LEFT SIDE — TEXT CONTENT (UNCHANGED) */}

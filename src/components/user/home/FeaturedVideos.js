@@ -147,7 +147,7 @@ export default function FeaturedVideos() {
   return (
     <section id="featured" className="bg-black text-white py-24">
       <div className="container mx-auto px-6 lg:px-12">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -156,17 +156,17 @@ export default function FeaturedVideos() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-red-500 text-xs tracking-[0.35em] uppercase mb-3">
+          <p className="text-[var(--tamil-orange)] text-xs tracking-[0.35em] uppercase mb-3">
             Highlights
           </p>
           <h2 className="text-3xl md:text-4xl font-black tracking-tight">
-            Featured Moments of Murugesan
+            Featured Moments of Tamil Gaming
           </h2>
         </motion.div>
 
         {/* Grid */}
         <div className="grid lg:grid-cols-3 gap-8">
-          
+
           {/* Main Featured */}
           <motion.a
             href={main.url}
